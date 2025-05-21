@@ -1,0 +1,85 @@
+.span1{
+  color: rgb(88, 18, 18);
+} 
+
+.span2{
+  color: rgb(88, 18, 18);
+}
+
+.header{
+  height: 34vw;
+  margin: 20px auto;
+  background: url('https://static.vecteezy.com/system/resources/thumbnails/045/344/071/small_2x/variety-junk-food-products-on-the-top-view-background-photo.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50px;
+  /* position: relative; */
+}
+.header-contents{
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.5vw;
+  max-width: 50%;
+  bottom: 10%;
+  left: 6vw;
+  padding-left: 30px;
+  animation: fadeIn 3s;
+  padding-top: 40px;
+}
+
+.header-contents h2{
+  font-weight: 500;
+  color: white;
+  font-size: max(4.5vw,22px);
+}
+
+.header-contents button{
+  border: none;
+  color: #741b2e;
+  font-weight: 500;
+  padding: 1vw 2.3vw;
+  background-color: white;
+  font-size: max(1vw, 13px);
+  border-radius: 50px;
+}
+
+@media (max-width:1050px) {
+  .header-contents{
+    max-width: 45%;
+  }
+   .header-contents p{
+      font-size: 10px;
+    }
+}
+@media (max-width:750px) {
+  .header{
+    height: 38vw;
+  }
+  .header-contents{
+    max-width: 65%;
+  }
+  .header-contents p{
+      display: none;
+    }
+  .header-contents button{
+  padding: 2vw 4vw;    
+    }
+}
+
+@media (max-width: 480px) {
+  .header-contents {
+    gap: 15px;
+  }
+
+  .header-contents p {
+    display: none; /* Optional: Hide if space is too limited */
+  }
+
+  .header-contents button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
