@@ -33,3 +33,19 @@
 .place-order .cart-total button{
   margin-top: 30px;
 }
+
+
+
+
+
+
+/* placeorder.css */
+.error {
+  color: red;
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

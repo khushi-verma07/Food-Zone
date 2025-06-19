@@ -9,6 +9,9 @@ import Footer from './components/Footer/Footer';
 import { useState } from 'react';
 import LoginPopup from './components/loginpopup/LoginPopup';
 
+
+
+
 const App = () => {
 
   const [showLogin, setShowLogin] = useState(false);

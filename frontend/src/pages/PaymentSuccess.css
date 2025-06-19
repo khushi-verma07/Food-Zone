@@ -1,0 +1,16 @@
+.payment-success {
+  padding: 2rem;
+  text-align: center;
+  background: #f9fff9;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #ccc;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+.payment-success h2 {
+  color: #28a745;
+}
+.payment-success p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
