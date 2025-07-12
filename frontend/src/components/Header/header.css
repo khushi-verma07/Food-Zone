@@ -1,58 +1,98 @@
-.span1{
-  color: rgb(88, 18, 18);
-} 
+.span1, .span2 {
+ color: #4CAF50;
+  text-shadow: 0 0 8px rgba(76, 175, 80, 0.5);}
 
-.span2{
-  color: rgb(88, 18, 18);
-}
+.header {
 
-.header{
-  height: 34vw;
-  margin: 20px auto;
-  background: url('https://static.vecteezy.com/system/resources/thumbnails/045/344/071/small_2x/variety-junk-food-products-on-the-top-view-background-photo.jpeg');
+ height: 34vw;
+  /* margin: 20px auto; */
+     margin: 0% 5% 1.5% 5%;
+
+  background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 50px;
-  /* position: relative; */
+  position: relative; /* Needed for child positioning */
+  overflow: hidden; /* Keeps children within border-radius */
+ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7); /* X, Y, blur, color */
 }
-.header-contents{
-  /* position: absolute; */
-  display: flex;
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Dark transparent layer */
+  z-index: 1;
+}
+
+.header-contents {
+   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 1.5vw;
   max-width: 50%;
-  bottom: 10%;
-  left: 6vw;
   padding-left: 30px;
-  animation: fadeIn 3s;
   padding-top: 40px;
+   position: relative;
+  z-index: 2; /* Above the overlay */
+  color: white; /* Text color for visibility */
 }
 
-.header-contents h2{
-  font-weight: 500;
+.header-contents h2 {
+  font-weight: 600; /* Slightly bolder */
   color: white;
   font-size: max(4.5vw,22px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.header-contents button{
+.header-contents p {
+  color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+  font-size: max(1.2vw, 14px);
+}
+
+.header-contents button {
   border: none;
-  color: #741b2e;
-  font-weight: 500;
+  color: white;
+  font-weight: 600;
   padding: 1vw 2.3vw;
-  background-color: white;
+  background-color: #4CAF50; /* Green button */
   font-size: max(1vw, 13px);
   border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
 }
 
+.header-contents button:hover {
+  background-color: #45a049; /* Darker green on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keep all your existing media queries exactly the same */
 @media (max-width:1050px) {
   .header-contents{
     max-width: 45%;
   }
-   .header-contents p{
-      font-size: 10px;
-    }
+  .header-contents p{
+    font-size: 10px;
+  }
 }
+
 @media (max-width:750px) {
   .header{
     height: 38vw;
@@ -61,25 +101,26 @@
     max-width: 65%;
   }
   .header-contents p{
-      display: none;
-    }
+    display: none;
+  }
   .header-contents button{
-  padding: 2vw 4vw;    
-    }
+    padding: 2vw 4vw;    
+  }
 }
 
 @media (max-width: 480px) {
   .header-contents {
     gap: 15px;
   }
-
   .header-contents p {
-    display: none; /* Optional: Hide if space is too limited */
+    display: none; 
   }
-
   .header-contents button {
     width: 100%;
     text-align: center;
   }
 }
+   
 
+
+  

@@ -1,51 +1,73 @@
-.place-order{
+.place-order {
   display: flex;
   align-items: start;
   justify-content: space-between;
   gap: 50px;
-  margin-top: 100px;
+  /* margin-top: 100px ; */
+  margin: 5% 5% 5% 5%;
 }
-.place-order-left{
+.place-order-left {
   width: 100%;
   max-width: max(30%, 500px);
 }
-.place-order-left .title{
+.place-order-left .title {
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 50px;
+  color: #2E7D32; /* Added dark green color to title */
 }
-.place-order-left input{
+.place-order-left input {
   margin-bottom: 15px;
   width: 100%;
   padding: 10px;
-  border:1px solid #c5c5c5;
+  border: 1px solid #c5c5c5;
   border-radius: 4px;
-  outline-color: tomato;
+  outline-color: #4CAF50; /* Changed from tomato to green */
 }
-.place-order-left .multi-fields{
+.place-order-left .multi-fields {
   display: flex;
   gap: 10px;
 }
-.place-order-right{
+.place-order-right {
   width: 100%;
-  max-width: max(40%,500px);
+  max-width: max(40%, 500px);
 }
-.place-order .cart-total button{
+
+/* Updated cart-total with your gradient */
+.place-order .cart-total {
+  background: white;
+  color: white;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.place-order .cart-total button {
   margin-top: 30px;
+  background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+  color: #2E7D32;
+  border: none;
+  padding: 12px 0;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+.place-order .cart-total button:hover {
+  background: linear-gradient(135deg,#00ff7f → #7cfc00 → #adff2f, #41b37a, #1e8a5e);
+  transform: translateY(-2px);
+}
 
-
-
-
-
-/* placeorder.css */
+/* Error and disabled states */
 .error {
-  color: red;
+  color: #f44336; /* Slightly softer red */
   font-size: 0.75rem;
   margin-top: 2px;
 }
+
 button[disabled] {
   opacity: 0.6;
   cursor: not-allowed;
+  background: #e0e0e0 !important;
+  color: #5f5d5d !important;
 }

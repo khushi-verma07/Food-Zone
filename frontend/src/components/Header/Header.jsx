@@ -7,10 +7,14 @@ const Header = () => {
       <div className="header-contents">
         <h2>Order your favourite food here</h2>
         <p>Savor the taste of perfection at <b><span className='span1'>Chef_</span></b><b><span className='span2'>Food</span></b>, where every dish tells a story of passion and fresh, handpicked ingredients. Indulge in a culinary experience crafted to delight your senses.</p>
-        <button>View Menu</button>
+        
       </div>
     </div>
   )
 }
 
 export default Header
+
+
+
+

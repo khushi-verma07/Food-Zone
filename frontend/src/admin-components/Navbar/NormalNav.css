@@ -28,6 +28,7 @@
   align-items: center;
 }
 
+/* Logo Styles */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -40,6 +41,17 @@
   transform: scale(1.03);
 }
 
+.logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 5px rgba(76, 175, 80, 0.3));
+  transition: all 0.3s ease;
+}
+
+.nav-logo:hover .logo-img {
+  transform: rotate(15deg);
+}
 
 .logo-text {
   font-size: 1.5rem;
@@ -71,6 +83,7 @@
   transform-origin: left;
 }
 
+/* Navigation Menu */
 .nav-menu {
   display: flex;
   gap: 30px;
@@ -117,6 +130,7 @@
   color: #2E7D32;
 }
 
+/* Navigation Icons */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -160,23 +174,21 @@
   right: 2px;
   width: 10px;
   height: 10px;
-  background: #2E7D32;
+  background: #FF5722;
   border-radius: 50%;
   opacity: 0;
   transition: all 0.3s ease;
-  box-shadow: 0 0 5px  #62d868;
- 
+  box-shadow: 0 0 5px #FF5722;
 }
 
 .cart-badge.visible {
   opacity: 1;
   transform: scale(1.2);
-  background: #2E7D32;
 }
 
+/* Sign In Button */
 .signin-btn {
   position: relative;
-  margin-bottom: 20px;
   padding: 10px 25px;
   background: linear-gradient(45deg, #4CAF50, #8BC34A);
   color: white;
@@ -216,6 +228,7 @@
   opacity: 1;
 }
 
+/* Profile Dropdown */
 .profile-menu {
   position: relative;
 }
@@ -288,19 +301,7 @@
   margin: 5px 0;
 }
 
-.cart-quantity-badge {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background: red;
-  color: white;
-  border-radius: 50%;
-  padding: 2px 7px;
-  font-size: 12px;
-  font-weight: bold;
-  z-index: 1;
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
   .nav-container {
     padding: 0 20px;
@@ -318,7 +319,7 @@
 
 @media (max-width: 576px) {
   .nav-menu {
-    display: none; 
+    display: none;
   }
   
   .nav-actions {
@@ -329,11 +330,4 @@
     padding: 8px 15px;
     font-size: 0.9rem;
   }
-} 
-
-
-
-
-
-
-
+}
