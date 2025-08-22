@@ -16,6 +16,7 @@ import AllPayments from "./admin-pages/AllPayments";
 import AdminLogin from "./admin-pages/AdminLogin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Chatbot from "./components/Chatbot/Chatbot";
 
 export default function App() {
   const [showLogin, setShowLogin] = useState(false);
@@ -28,6 +29,7 @@ export default function App() {
 
       {/* ✅ Only show user navbar & footer if NOT admin route */}
       {!isAdminRoute && <Navbar setShowLogin={setShowLogin} />}
+      {!isAdminRoute && <Chatbot />}
 
       <Routes>
         {/* User Routes */}

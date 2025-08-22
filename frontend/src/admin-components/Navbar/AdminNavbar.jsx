@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { 
   faCog, 
@@ -26,18 +26,18 @@ const AdminNavbar = () => {
           Admin Panel
         </Link>
         <div className="admin-nav-links">
-          <Link to="/admin/add" className="nav-link">
+          <NavLink to="/admin/add" className="nav-link">
             <FontAwesomeIcon icon={faPlus} className="link-icon" />
             Add
-          </Link>
-          <Link to="/admin/list" className="nav-link">
+          </NavLink>
+          <NavLink to="/admin/list" className="nav-link">
             <FontAwesomeIcon icon={faList} className="link-icon" />
             List
-          </Link>
-          <Link to="/admin/orders" className="nav-link">
+          </NavLink>
+          <NavLink to="/admin/orders" className="nav-link">
             <FontAwesomeIcon icon={faCreditCard} className="link-icon" />
             Payments
-          </Link>
+          </NavLink>
           <button onClick={handleLogout} className="logout-btn">
             <FontAwesomeIcon icon={faSignOutAlt} className="link-icon" />
             Logout

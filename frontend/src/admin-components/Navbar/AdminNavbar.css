@@ -68,6 +68,13 @@
   transform: translateY(-1px);
 }
 
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-bottom: 3px solid #fff;
+  font-weight: 600;
+  transform: translateY(-1px);
+}
+
 /* Logout button */
 .logout-btn {
   background: rgba(255, 255, 255, 0.2);
