@@ -27,7 +27,7 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { FaCheckCircle, FaHome, FaPhone, FaEnvelope } from "react-icons/fa";
-import "./paymentSuccess.css";
+import "./PaymentSuccess.css";
 
 const PaymentSuccess = () => {
   const { state } = useLocation();
