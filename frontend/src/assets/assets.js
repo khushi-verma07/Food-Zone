@@ -59,7 +59,7 @@ import profile_icon from './profile_icon.png'
 import bag1 from './bag1.png'
 import logout1 from './logout1.png'
 import parcel_icon from './parcel_icon.png'
-import chef from './chef.gif'
+import chef from './Chef.gif'
 
 export const assets = {
     logo,
