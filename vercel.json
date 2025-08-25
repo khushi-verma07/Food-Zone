@@ -1,6 +1,6 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "Food-Zone/frontend/dist",
+  "buildCommand": "cd Food-Zone/frontend && npm install && npm run build && cp -r dist ../../dist",
+  "outputDirectory": "dist",
   "rewrites": [
     {
       "source": "/(.*)",
