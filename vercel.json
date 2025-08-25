@@ -1,4 +1,6 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "Food-Zone/frontend/dist",
   "rewrites": [
     {
       "source": "/(.*)",
