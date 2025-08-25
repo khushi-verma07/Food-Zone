@@ -1,11 +1,11 @@
 import express from "express";
 import Payment from "../models/Payment.js";
-import jwt from "jsonwebtoken";
+import authMiddleware, { adminAuthMiddleware } from "../middleware/auth.js";
 
 const router = express.Router();
 
 // ✅ Save payment
-router.post("/payment-success", async (req, res) => {
+router.post("/payment-success", authMiddleware, async (req, res) => {
   try {
     const { email, name, cartItems, amountPaid } = req.body;
 
@@ -25,11 +25,9 @@ router.post("/payment-success", async (req, res) => {
 });
 
 // ✅ Get orders for the currently logged-in user
-router.get("/user-orders", async (req, res) => {
+router.get("/user-orders", authMiddleware, async (req, res) => {
   try {
-    const token = req.headers.token;
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    const orders = await Payment.find({ email: decoded.email }).sort({ date: -1 });
+    const orders = await Payment.find({ userId: req.userId }).sort({ date: -1 });
     res.status(200).json(orders);
   } catch (err) {
     console.error("❌ Error fetching user orders:", err);
@@ -38,7 +36,7 @@ router.get("/user-orders", async (req, res) => {
 });
 
 // ✅ NEW: Get all orders (admin access)
-router.get("/all-payments", async (req, res) => {
+router.get("/all-payments", adminAuthMiddleware, async (req, res) => {
   try {
     const payments = await Payment.find().sort({ date: -1 });
     res.status(200).json(payments);
