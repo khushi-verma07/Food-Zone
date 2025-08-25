@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { food_list as localFoodList } from "../assets/assets";
 
 export const StoreContext = createContext();
 
@@ -7,7 +8,7 @@ const StoreContextProvider = ({ children }) => {
   const [food_list, setFoodList] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const url = "http://localhost:4000";
+  const url = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
 
   useEffect(() => {
     setCartItems({});
@@ -52,6 +53,8 @@ const StoreContextProvider = ({ children }) => {
       setFoodList(res.data.data);
     } catch (err) {
       console.error("Error fetching food list:", err);
+      // Fallback to local food list
+      setFoodList(localFoodList);
     }
   };
 
