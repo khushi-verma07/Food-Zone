@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AllPayments.css";
+import { BASE_URL } from "../constants";
 
 const AllPayments = () => {
   const [payments, setPayments] = useState([]);
@@ -8,7 +9,7 @@ const AllPayments = () => {
   useEffect(() => {
     const fetchPayments = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/payment/all-payments");
+        const res = await axios.get(`${BASE_URL}/api/payment/all-payments`);
         setPayments(res.data);
       } catch (err) {
         console.error("Error fetching all payments", err);
@@ -35,7 +36,7 @@ const AllPayments = () => {
                 {payment.cartItems.map((item, i) => (
                   <li key={i} style={{ "--order": i }}>
                     <img
-                      src={`http://localhost:4000/images/${item.image}`}
+                      src={`${BASE_URL}/images/${item.image}`}
                       alt={item.name}
                       width="60"
                       height="60"
@@ -54,7 +55,3 @@ const AllPayments = () => {
 };
 
 export default AllPayments;
-
-
-
-
