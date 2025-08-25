@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./admin-login.css";
 import NormalNav from "../admin-components/Navbar/NormalNav";
 import { toast } from "react-toastify";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import axios from "axios";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // 👁️ Icons for show/hide password
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -13,22 +12,21 @@ const AdminLogin = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/admin/login`, {
-        email,
-        password
-      });
-      
-      if (response.data.success) {
-        localStorage.setItem("adminToken", response.data.token);
-        localStorage.setItem("isAdmin", "true");
-        toast.success("Admin login successful!");
-        navigate("/admin/add");
-      }
-    } catch (error) {
-      toast.error(error.response?.data?.message || "Login failed");
+    const adminEmail = "admin@example.com";
+    const adminPassword = "admin123";
+
+    console.log("Entered:", { email, password });
+    console.log("Expected:", { adminEmail, adminPassword });
+    console.log("Match:", email === adminEmail, password === adminPassword);
+
+    if (email === adminEmail && password === adminPassword) {
+      localStorage.setItem("isAdmin", "true");
+      toast.success("Admin login successful!");
+      navigate("/admin/add");
+    } else {
+      toast.error("you are not authorazied");
     }
   };
 

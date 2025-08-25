@@ -8,6 +8,12 @@ adminRouter.post("/login", async (req, res) => {
     try {
         const { email, password } = req.body;
         
+        console.log("Admin login attempt:", { email, password });
+        console.log("Expected:", { 
+            email: process.env.ADMIN_EMAIL, 
+            password: process.env.ADMIN_PASSWORD 
+        });
+        
         // Check against environment variables
         if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
             const token = jwt.sign(
@@ -28,6 +34,7 @@ adminRouter.post("/login", async (req, res) => {
             });
         }
     } catch (error) {
+        console.error("Admin login error:", error);
         res.status(500).json({
             success: false,
             message: "Server error"
