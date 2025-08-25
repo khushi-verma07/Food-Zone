@@ -1,1 +1,1 @@
-export const BASE_URL = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? "" : "http://localhost:4000");
+export const BASE_URL = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? "https://food-zone-ib5i.onrender.com" : "http://localhost:4000");
