@@ -14,6 +14,7 @@ const AdminLogin = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    // Fixed: Using hardcoded login, no API calls
     const adminEmail = "admin@example.com";
     const adminPassword = "admin123";
 
