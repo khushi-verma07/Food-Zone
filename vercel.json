@@ -11,11 +11,12 @@
   ],
   "routes": [
     {
-      "handle": "filesystem"
+      "src": "/Food-Zone/frontend/dist/(.*)",
+      "dest": "/Food-Zone/frontend/dist/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/Food-Zone/frontend/dist/index.html"
     }
   ]
 }
