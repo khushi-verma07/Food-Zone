@@ -42,6 +42,10 @@ const AllPayments = () => {
                       width="60"
                       height="60"
                       style={{ borderRadius: "6px", marginRight: "10px" }}
+                      onError={(e) => {
+                        console.log('Image load error:', e.target.src);
+                        e.target.src = 'https://via.placeholder.com/60';
+                      }}
                     />
                     {item.name} × {item.quantity} — ₹{item.price}
                   </li>
