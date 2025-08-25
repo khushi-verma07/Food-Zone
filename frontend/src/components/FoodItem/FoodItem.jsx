@@ -4,8 +4,24 @@ import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 
 const FoodItem = ({ id = "", name = "", price = 0, description = "", image = "" }) => {
-  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
+  const { cartItems, addToCart, removeFromCart, url, token } = useContext(StoreContext);
   const itemCount = cartItems?.[id] || 0;
+
+  const handleAddToCart = () => {
+    if (!token) {
+      alert('Please login to add items to cart');
+      return;
+    }
+    addToCart(id);
+  };
+
+  const handleRemoveFromCart = () => {
+    if (!token) {
+      alert('Please login to modify cart');
+      return;
+    }
+    removeFromCart(id);
+  };
 
   return (
     <div className='food-item'>
@@ -14,17 +30,17 @@ const FoodItem = ({ id = "", name = "", price = 0, description = "", image = "" 
         
         {/* Default cart icon */}
         {itemCount === 0 && (
-          <div className='cart-icon' onClick={() => addToCart(id)}>
+          <div className='cart-icon' onClick={handleAddToCart}>
             <img src={assets.add_icon_white} alt="Add to cart" />
           </div>
         )}
         
         {/* Add/remove controls */}
-        {itemCount > 0 && (
+        {itemCount > 0 && token && (
           <div className={`food-item-counter ${itemCount > 0 ? 'active' : ''}`}>
-            <img onClick={() => removeFromCart(id)} src={assets.remove_icon_red} alt='Remove' />
+            <img onClick={handleRemoveFromCart} src={assets.remove_icon_red} alt='Remove' />
             <p>{itemCount}</p>
-            <img onClick={() => addToCart(id)} src={assets.add_icon_green} alt="Add" />
+            <img onClick={handleAddToCart} src={assets.add_icon_green} alt="Add" />
           </div>
         )}
       </div>

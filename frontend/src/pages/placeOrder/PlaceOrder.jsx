@@ -35,6 +35,12 @@ const PlaceOrder = () => {
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
+    if (!token) {
+      navigate('/');
+    }
+  }, [token, navigate]);
+
+  useEffect(() => {
     const allFilled = Object.values(formData).every((val) => val.trim() !== "");
     setIsFormValid(allFilled);
   }, [formData]);
@@ -49,10 +55,15 @@ const PlaceOrder = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!token) {
+      alert('Please login to place an order');
+      navigate('/');
+      return;
+    }
     if (!isFormValid) {
       const newErrors = {};
       Object.entries(formData).forEach(([key, val]) => {
-        if (val.trim() === "") newErrors[key] = "This field can’t be empty";
+        if (val.trim() === "") newErrors[key] = "This field can't be empty";
       });
       setErrors(newErrors);
       return;
@@ -61,6 +72,12 @@ const PlaceOrder = () => {
   };
 
   const startPayment = useCallback(async () => {
+    if (!token) {
+      alert('Please login to proceed with payment');
+      navigate('/');
+      return;
+    }
+
     const ok = await loadRzpScript();
     if (!ok) return alert("Razorpay SDK failed to load.");
 
@@ -114,7 +131,17 @@ const PlaceOrder = () => {
 
     const rzp = new window.Razorpay(options);
     rzp.open();
-  }, [formData, cartItems, food_list, getTotalCartAmount, navigate, url, setCartItems]);
+  }, [formData, cartItems, food_list, getTotalCartAmount, navigate, url, setCartItems, token]);
+
+  if (!token) {
+    return (
+      <div className="place-order">
+        <div style={{ textAlign: 'center', padding: '50px' }}>
+          <h2>Please login to place an order</h2>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form className="place-order" onSubmit={handleSubmit}>

@@ -1,12 +1,36 @@
-
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount, url } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount, url, token } = useContext(StoreContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate('/');
+    }
+  }, [token, navigate]);
+
+  const handleProceedToCheckout = () => {
+    if (!token) {
+      alert('Please login to proceed to checkout');
+      navigate('/');
+      return;
+    }
+    navigate('/order');
+  };
+
+  if (!token) {
+    return (
+      <div className="cart">
+        <div style={{ textAlign: 'center', padding: '50px' }}>
+          <h2>Please login to view your cart</h2>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="cart">
@@ -64,7 +88,7 @@ const Cart = () => {
               <b>RS/- {getTotalCartAmount() === 0 ? "0" : getTotalCartAmount() + 100}</b>
             </div>
           </div>
-          <button onClick={() => navigate('/order')}>PROCEED TO CHECKOUT</button>
+          <button onClick={handleProceedToCheckout}>PROCEED TO CHECKOUT</button>
         </div>
 
        
@@ -74,5 +98,4 @@ const Cart = () => {
 };
 
 export default Cart;
-
 
