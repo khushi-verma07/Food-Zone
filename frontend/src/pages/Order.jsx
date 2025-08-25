@@ -13,9 +13,10 @@ const Order = () => {
         const res = await axios.get(`${url}/api/payment/user-orders`, {
           headers: { token },
         });
-        setOrders(res.data);
+        setOrders(res.data || []);
       } catch (err) {
         console.error("❌ Error fetching orders:", err);
+        setOrders([]);
       }
     };
 

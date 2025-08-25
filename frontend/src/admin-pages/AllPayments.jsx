@@ -10,9 +10,10 @@ const AllPayments = () => {
     const fetchPayments = async () => {
       try {
         const res = await axios.get(`${BASE_URL}/api/payment/all-payments`);
-        setPayments(res.data);
+        setPayments(res.data || []);
       } catch (err) {
         console.error("Error fetching all payments", err);
+        setPayments([]);
       }
     };
 
