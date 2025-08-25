@@ -32,13 +32,6 @@ const Add = () => {
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    
-    // Validation
-    if (!data.name || !data.description || !data.price || !image) {
-      toast.error("Please fill all fields and upload an image");
-      return;
-    }
-    
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("description", data.description);
@@ -47,13 +40,7 @@ const Add = () => {
     formData.append("image", image);
 
     try {
-      const adminToken = localStorage.getItem("adminToken");
-      const response = await axios.post(`${BASE_URL}/api/food/add`, formData, {
-        headers: {
-          token: adminToken
-        }
-      });
-      
+      const response = await axios.post(`${BASE_URL}/api/food/add`, formData);
       if (response.data.success) {
         setData({
           name: "",
@@ -67,14 +54,8 @@ const Add = () => {
         toast.error(response.data.message);
       }
     } catch (error) {
-      if (error.response?.status === 401 || error.response?.status === 403) {
-        localStorage.removeItem("adminToken");
-        localStorage.removeItem("isAdmin");
-        navigate("/admin-login");
-        toast.error("Session expired. Please login again.");
-      } else {
-        toast.error(error.response?.data?.message || "Failed to add product.");
-      }
+      console.error("Add Error:", error.response || error.message);
+      toast.error("Failed to add product.");
     }
   };
 
