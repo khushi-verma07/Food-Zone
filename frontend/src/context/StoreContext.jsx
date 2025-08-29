@@ -8,7 +8,8 @@ const StoreContextProvider = ({ children }) => {
   const [food_list, setFoodList] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const url = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+  // const url = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
+  const url = import.meta.env.VITE_BACKEND_URL ;
 
   useEffect(() => {
     setCartItems({});

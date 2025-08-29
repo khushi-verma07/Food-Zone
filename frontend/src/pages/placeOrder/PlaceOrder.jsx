@@ -103,7 +103,7 @@ const PlaceOrder = () => {
                 name: item?.name,
                 quantity,
                 price: item?.price,
-                image: item?.image, // ✅ Include image path
+                image: item?.image, 
               };
             }),
             amountPaid: totalRupees,
@@ -112,7 +112,7 @@ const PlaceOrder = () => {
           await axios.post(`${url}/api/payment/payment-success`, payload);
 
           // alert("✅ Payment successful!");
-          setCartItems({}); // clear cart from context
+          setCartItems({});
           navigate("/payment-success", { state: { deliveryInfo: formData } });
         } catch (err) {
           console.error("❌ Error saving payment:", err);
