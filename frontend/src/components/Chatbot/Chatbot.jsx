@@ -1,8 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import './Chatbot.css';
 import axios from 'axios';
+import { StoreContext } from '../../context/StoreContext';
 
 const Chatbot = () => {
+  const { url } = useContext(StoreContext);
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     { text: "Hi! I'm your FoodZone assistant. How can I help you today?", isBot: true }
@@ -28,7 +30,7 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:4000/api/chatbot/chat', {
+      const response = await axios.post(`${url}/api/chatbot/chat`, {
         message: inputMessage
       });
 

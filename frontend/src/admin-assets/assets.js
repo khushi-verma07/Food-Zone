@@ -18,4 +18,4 @@ export const assets = {
   order_icon
 };
 
-export const url = import.meta.env.VITE_BACKEND_URL || 'http://localhost:4000';
+export const url = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? "https://food-zone-ib5i.onrender.com" : "http://localhost:4000");

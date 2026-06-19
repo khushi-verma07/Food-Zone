@@ -8,8 +8,7 @@ const StoreContextProvider = ({ children }) => {
   const [food_list, setFoodList] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState(localStorage.getItem("token"));
-  // const url = import.meta.env.VITE_BACKEND_URL || "http://localhost:4000";
-  const url = import.meta.env.VITE_BACKEND_URL ;
+  const url = import.meta.env.VITE_BACKEND_URL || (import.meta.env.PROD ? "https://food-zone-ib5i.onrender.com" : "http://localhost:4000");
 
   useEffect(() => {
     setCartItems({});
